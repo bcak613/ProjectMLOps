@@ -1,0 +1,26 @@
+name: mlops-churn
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pandas
+  - numpy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - shap
+  - xgboost
+  - psycopg2-binary
+  - uvicorn
+  - pyarrow
+  - pip:
+      - mlflow
+      - dvc
+      - dvc-s3
+      - feast
+      - redis
+      - fastapi
+      - evidently
+      - gradio
