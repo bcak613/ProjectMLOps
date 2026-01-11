@@ -32,8 +32,20 @@ services:
     ports:
       - "6379:6379"
 
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: mlops-redisinsight
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
+    volumes:
+      - redisinsight_data:/data
+
   mlflow:
-    image: ghcr.io/mlflow/mlflow:v2.12.1
+    build:
+      context: .
+      dockerfile: Dockerfile.mlflow
     container_name: mlops-mlflow
     ports:
       - "5000:5000"
@@ -42,10 +54,7 @@ services:
       AWS_ACCESS_KEY_ID: minioadmin
       AWS_SECRET_ACCESS_KEY: minioadmin
     command: >
-      mlflow server
-      --backend-store-uri postgresql://user:password@db:5432/mlflow_db
-      --default-artifact-root s3://mlflow/artifacts
-      --host 0.0.0.0
+      mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://mlflow/artifacts --host 0.0.0.0
     depends_on:
       - minio
       - db
@@ -53,3 +62,4 @@ services:
 volumes:
   minio_data:
   postgres_data:
+  redisinsight_data:

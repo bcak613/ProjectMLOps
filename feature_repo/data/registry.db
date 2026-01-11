@@ -1,0 +1,30 @@
+
+a
+C
+customer_idcustomer identifier"customer_idJchurn_prediction
+®îË°È¼{Œ÷ËÈÛ¹y
+E
+'
+__dummy"
+__dummy_idJchurn_prediction
+®îËĞÿ´{Œ÷Ë¨ÜØy1"$ee95cbf3-5ec6-4474-b672-292b25d46126*Œ÷Ë°ë~2è
+É
+churn_featureschurn_predictioncustomer_id"
+Age"
+
+Gender"
+
+Tenure"
+Usage Frequency"
+Support Calls"
+Payment Delay"
+Subscription Type"
+Contract Length"
+Total Spend"
+Last Interaction*
+teamchurn_prediction2€£:µevent_timestampZ'%../data/processed/train_churn.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢%../data/processed/train_churn.parquet’Œ÷ËÈ´Şq"Œ÷Ëøõ®x@b
+customer_id
+®îËĞÄ{Œ÷Ëğ¾xbÈevent_timestampZ'%../data/processed/train_churn.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢%../data/processed/train_churn.parquetªchurn_prediction’Œ÷ËÈ´Şq"Œ÷Ëøõ®xŠ0
+
+churn_prediction
+®îË ÑpŒ÷ËÈ’“r

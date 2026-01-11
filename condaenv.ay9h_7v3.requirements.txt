@@ -1,8 +1,0 @@
-mlflow
-dvc
-dvc-s3
-feast
-redis
-fastapi
-evidently
-gradio

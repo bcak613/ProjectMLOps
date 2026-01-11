@@ -9,15 +9,32 @@ def load_data(file_path):
 
 def clean_data(df):
     print("Cleaning data...")
+    
+    # Drop rows where Churn is NaN
+    df.dropna(subset=['Churn'], inplace=True)
+    
     # Basic preprocessing
-    df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
-    df['TotalCharges'].fillna(0, inplace=True)
+    # The dataset uses 'Total Spend' instead of 'TotalCharges'
+    if 'Total Spend' in df.columns:
+        df['Total Spend'] = pd.to_numeric(df['Total Spend'], errors='coerce')
+        df['Total Spend'].fillna(0, inplace=True)
     
     # Binary encoding for target
-    df['Churn'] = df['Churn'].apply(lambda x: 1 if x == 'Yes' else 0)
+    # The dataset 'Churn' column might already be numeric (0/1) or 'Yes'/'No'
+    if df['Churn'].dtype == 'object':
+        df['Churn'] = df['Churn'].apply(lambda x: 1 if x == 'Yes' else 0)
     
-    # Simple encoding for categorical variables (for demonstration)
-    # in a real scenario, use OneHotEncoder or similar and save the artifact
+    # Fill remaining NaNs with 0 or a placeholder
+    df.fillna(0, inplace=True)
+    
+    # Rename CustomerID to customer_id for consistency with Feast
+    if 'CustomerID' in df.columns:
+        df.rename(columns={'CustomerID': 'customer_id'}, inplace=True)
+    
+    if 'customer_id' in df.columns:
+        df['customer_id'] = df['customer_id'].astype(int)
+
+    # Simple encoding for categorical variables
     categorical_cols = df.select_dtypes(include=['object']).columns
     for col in categorical_cols:
         if col != 'customer_id': # Keep entity key as is
@@ -41,8 +58,8 @@ def main():
     df = load_data(args.input)
     df = clean_data(df)
     
-    # Add timestamp for Feast if needed, using current time for simplicity
-    df['event_timestamp'] = pd.Timestamp.now()
+    # Add timestamp for Feast if needed, using current time for simplicity (UTC)
+    df['event_timestamp'] = pd.Timestamp.now(tz='UTC')
     
     train_df, test_df = train_test_split(df, test_size=0.2, random_state=42)
     

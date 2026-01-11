@@ -55,4 +55,10 @@ mlruns/
 
 # OS
 .DS_Store
-Thumbs.db
+# Documentation
+docs/*.pdf
+
+# Artifacts
+confusion_matrix.png
+shap_summary.png
+reports/

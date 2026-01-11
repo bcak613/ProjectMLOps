@@ -10,26 +10,26 @@
 **Mục tiêu:** Thiết lập hạ tầng và luồng dữ liệu sạch vào Feature Store.
 
 ### 1.1. Hạ tầng (Infrastructure) - *Người phụ trách: DevOps/MLOps*
-* [ ] **Repository Setup:** Tạo GitHub Repo, cấu trúc thư mục chuẩn (`src`, `data`, `notebooks`, `.github`, `scripts`).
-* [ ] **Environment:** Tạo file `environment.yml` (Conda) và `requirements.txt`. Đảm bảo team dùng chung phiên bản Python (3.9 hoặc 3.10).
-* [ ] **Service Setup:** Dựng Docker Compose cho các dịch vụ nền tảng:
+* [x] **Repository Setup:** Tạo GitHub Repo, cấu trúc thư mục chuẩn (`src`, `data`, `notebooks`, `.github`, `scripts`).
+* [x] **Environment:** Tạo file `environment.yml` (Conda) và `requirements.txt`. Đảm bảo team dùng chung phiên bản Python (3.9 hoặc 3.10).
+* [x] **Service Setup:** Dựng Docker Compose cho các dịch vụ nền tảng:
     * **MinIO:** Giả lập S3 để lưu trữ Data & Artifacts.
     * **PostgreSQL:** Backend cho MLflow và Feast.
     * **Redis:** Online Store cho Feast.
     * **MLflow Server:** Dashboard theo dõi thí nghiệm.
 
 ### 1.2. Data Engineering - *Người phụ trách: Data Engineer*
-* [ ] **DVC Initialization:** Cài đặt DVC, cấu hình remote storage trỏ về MinIO.
-* [ ] **Data Versioning:** Thực hiện `dvc add data/raw/churn.csv` và push lên MinIO.
-* [ ] **ETL Script:** Viết script `process_data.py`:
+* [x] **DVC Initialization:** Cài đặt DVC, cấu hình remote storage trỏ về MinIO.
+* [x] **Data Versioning:** Thực hiện `dvc add data/raw/churn.csv` và push lên MinIO.
+* [x] **ETL Script:** Viết script `process_data.py`:
     * Clean dữ liệu.
     * Split Train/Test.
     * Lưu output dưới dạng **Parquet** (để tối ưu cho Feast).
 
 ### 1.3. Feature Store - *Người phụ trách: Data Engineer + Data Scientist*
-* [ ] **Feast Definitions:** Định nghĩa file `feature_store.yaml` và `definitions.py` (Entity, Feature Views).
-* [ ] **Materialization:** Chạy lệnh `feast materialize` để đẩy dữ liệu từ Parquet (Offline) lên Redis (Online).
-* [ ] **Test:** Viết script nhỏ `test_feast.py` để thử query một feature vector từ Redis xem tốc độ có < 10ms không.
+* [x] **Feast Definitions:** Định nghĩa file `feature_store.yaml` và `definitions.py` (Entity, Feature Views).
+* [x] **Materialization:** Chạy lệnh `feast materialize` để đẩy dữ liệu từ Parquet (Offline) lên Redis (Online).
+* [x] **Test:** Viết script nhỏ `test_feast.py` để thử query một feature vector từ Redis xem tốc độ có < 10ms không.
 
 ---
 
@@ -37,16 +37,16 @@
 **Mục tiêu:** Có được mô hình tốt nhất và quản lý được các phiên bản thí nghiệm.
 
 ### 2.1. Experimentation - *Người phụ trách: Data Scientist*
-* [ ] **Baseline Model:** Train model XGBoost cơ bản trên Notebook để làm mốc so sánh.
-* [ ] **Refactor Code:** Chuyển code từ Notebook sang script `src/train.py`.
-* [ ] **MLflow Integration:** Gắn `mlflow.xgboost.autolog()` vào code training.
-* [ ] **Custom Logging:** Log thêm các metrics quan trọng: F1-Score, AUC. Log `confusion_matrix.png` và `shap_summary.png` dưới dạng Artifacts.
+* [x] **Baseline Model:** Train model XGBoost cơ bản trên Notebook để làm mốc so sánh.
+* [x] **Refactor Code:** Chuyển code từ Notebook sang script `src/train.py`.
+* [x] **MLflow Integration:** Gắn `mlflow.xgboost.autolog()` vào code training.
+* [x] **Custom Logging:** Log thêm các metrics quan trọng: F1-Score, AUC. Log `confusion_matrix.png` và `shap_summary.png` dưới dạng Artifacts.
 
 ### 2.2. Model Registry - *Người phụ trách: ML Engineer*
-* [ ] **Registry Workflow:** Thiết lập quy trình đăng ký model.
+* [x] **Registry Workflow:** Thiết lập quy trình đăng ký model.
     * Model tốt nhất sẽ được register với tên `churn-prediction-model`.
     * Sử dụng Alias: `@Staging` cho model vừa train xong, `@Champion` cho model đang chạy Production.
-* [ ] **Evaluation Script:** Viết `eval.py` để load model và test trên tập dữ liệu kiểm thử, đảm bảo metrics đạt ngưỡng (threshold) đề ra.
+* [x] **Evaluation Script:** Viết `eval.py` để load model và test trên tập dữ liệu kiểm thử, đảm bảo metrics đạt ngưỡng (threshold) đề ra.
 
 ---
 
