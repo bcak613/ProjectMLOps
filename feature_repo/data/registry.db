@@ -1,13 +1,13 @@
 
-a
+b
 C
-customer_idcustomer identifier"customer_idJchurn_prediction
-®îË°È¼{Œ÷ËÈÛ¹y
-E
+customer_idcustomer identifier"customer_idJchurn_prediction
+®îË°È¼{ıœËè¾­Ñ
+F
 '
 __dummy"
-__dummy_idJchurn_prediction
-®îËĞÿ´{Œ÷Ë¨ÜØy1"$ee95cbf3-5ec6-4474-b672-292b25d46126*Œ÷Ë°ë~2è
+__dummy_idJchurn_prediction
+®îËĞÿ´{ıœËØ¥ÅÑ1"$ea941902-437f-4ef1-a3a9-052eeb8d66c1*ıœË¨¢àØ2è
 É
 churn_featureschurn_predictioncustomer_id"
 Age"
@@ -24,7 +24,7 @@ __dummy_idJchurn_prediction
 Last Interaction*
 teamchurn_prediction2€£:µevent_timestampZ'%../data/processed/train_churn.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢%../data/processed/train_churn.parquet’Œ÷ËÈ´Şq"Œ÷Ëøõ®x@b
 customer_id
-®îËĞÄ{Œ÷Ëğ¾xbÈevent_timestampZ'%../data/processed/train_churn.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢%../data/processed/train_churn.parquetªchurn_prediction’Œ÷ËÈ´Şq"Œ÷Ëøõ®xŠ0
+®îËĞÄ{Œ÷Ëğ¾xbÈevent_timestampZ'%../data/processed/train_churn.parquetŠ1feast.infra.offline_stores.file_source.FileSource¢%../data/processed/train_churn.parquetªchurn_prediction’Œ÷ËÈ´Şq"Œ÷Ëøõ®xŠ1
 
-churn_prediction
-®îË ÑpŒ÷ËÈ’“r
+churn_prediction
+®îË ÑpıœËø¼³Ê

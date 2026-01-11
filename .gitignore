@@ -47,6 +47,7 @@ feature_store/data/
 
 # MLflow
 mlruns/
+mlflow.db
 .trash/
 
 # IDE
